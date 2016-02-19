@@ -43,8 +43,8 @@ var allusersController = require('./controllers/allusers.js');
 app.use('/allusers', allusersController);
 
 //for private access <<<<<<<<< for some reason this is breaking it
-// var usersController = require('./controllers/users.js');
-// app.use('/allusers/users', usersController);
+var usersController = require('./controllers/users.js');
+app.use('/users', usersController);
 
 //blog controller???? 
 
