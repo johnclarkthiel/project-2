@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1> <%= users.name %> ... public show page?</h1>
+Need a list of the users blogs so ...
+
+			<% for (var i = 0; i < users.blog.length; i++) { %>	
+					<a href="/allusers/<%=users[i]._id%>/<%=users.blog[i]._id%>"><li> <%=users.blog[i].name%></li></a>
+		
+			<%	} %><br>
+			
+	<a href="/allusers">Link back go all users</a><br>
+	<a href="/">Link back hoome</a>
+</body>
+</html>

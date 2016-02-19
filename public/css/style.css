@@ -8,4 +8,16 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
+	font-size: 25px;
+	color: white;
+	-webkit-text-fill-color: white; 
+ 	-webkit-text-stroke-width: 1px;
+ 	-webkit-text-stroke-color: black;
+ 	font-family: Arial;
+ 	text-align: center;
+ 	text-shadow: 1px 1px black;
+}
+
+a {
+	color: white;
 }

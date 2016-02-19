@@ -4,6 +4,19 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-<h1>Very Mediocre Blogging Platform - A platform whose name conveys the quality of its build</h1>
+	<h1>Very Mediocre Blogging Platform - A platform whose name conveys the quality of its build</h1>
+		<a href="/allusers">Link to Sign up</a>
+
+		<h2>See our bloggers' work</h2>
+		
+		<ul>
+			<% for (var i = 0; i < users.length; i++) { %>	
+					<a href="/allusers/<%=users[i]._id%>"><li> <%=users[i].name%></li></a>
+		
+			<%	} %>
+		</ul>
+
+
+	
 </body>
 </html>

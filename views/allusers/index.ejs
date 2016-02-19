@@ -4,10 +4,21 @@
 </head>
 <body>
 	<h1>All bloggers</h1>
-		<ul></ul>
-			<% for (var i = 0; i < users.length: i ++ ) { %>
-				<li> <%=users[i].name%> </li>
-		<%	} %>
 
+		<h2>Sign up</h2>
+		<form action='/allusers' method='POST'>	
+			<input type='text' name='name' placeholder='name'><br>
+			<input type='text' name='email' placeholder='email'><br>
+			<input type='text' name='password' placeholder='password'><br>
+			<button>Sign up!</button>
+		</form>
+
+<a href="/">Go to home page</a><br>
+	 <h3>Check out these bloggers' blogs!</h3>
+		<ul>
+			<% for (var i = 0; i < users.length; i++) { %>	
+					<a href="/allusers/<%=users[i]._id%>"><li> <%=users[i].name%></li></a>
+			<%	} %>
+		</ul>
 </body>
 </html>

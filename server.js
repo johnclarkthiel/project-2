@@ -14,20 +14,40 @@ var port = process.env.PORT || 3000;
 var mongoose = require('mongoose');
 var mongoURI = process.env.MONGOLAB_URI || 'mongodb://localhost/very_blog';
 
+//for home page
+var User = require('./models/users.js');
+var Blog = require('./models/blogs.js');
 
 //middleware
 app.use(express.static('public'))
 app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(methodOverride('_method'));
+
+//passport middleware
 
 
-
-//test index page
+//index page
 app.get('/', function(req,res){
-	res.render('index.ejs');
+	User.find({}, function(err, users){
+		res.render('index.ejs', {
+			users : users
+		});
+	})
 });
 
 //controllers
-var allusersController = require('./controllers/allusers.js') 
+//for public access
+var allusersController = require('./controllers/allusers.js');
+app.use('/allusers', allusersController);
+
+//for private access <<<<<<<<< for some reason this is breaking it
+// var usersController = require('./controllers/users.js');
+// app.use('/allusers/users', usersController);
+
+//blog controller???? 
+
 
 //mongoose
 mongoose.connect(mongoURI);
