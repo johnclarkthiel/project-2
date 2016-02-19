@@ -18,6 +18,7 @@ Models:
 
 Right now, I think I’ll go with the minimum of two—a user model and a blog post model. They should look something like this:
 User: 
+
 	var user = new User({
 		name : {type: String, required: true},
 		email  : {type: String, unique: true, required: true},
