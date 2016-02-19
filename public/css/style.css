@@ -21,3 +21,13 @@ body {
 a {
 	color: white;
 }
+
+textarea {
+	height: 50%;
+	width: 80%;
+}
+
+button {
+	height: 5%;
+	width: 10%;
+}

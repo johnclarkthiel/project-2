@@ -4,10 +4,10 @@ var userSchema = require('./users.js').schema;
 
 var newBlog = new Schema({
 		title : { type: String, unique: true, required: true },
-		hed : {type : String, required: true},
-		dek : {type : String, required: true},
-		date : {type : Date, default: Date.now,required: true },
-		published : {type: Boolean, required: true}
+		hed : {type : String},
+		dek : {type : String, requried: true},
+		date : {type : Date, default: Date.now},
+		published : {type: Boolean}
 		// author : [userSchema]
 });
 

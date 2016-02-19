@@ -3,11 +3,11 @@
 	<title>User Page/Private Show Page</title>
 </head>
 <body>
-	<h1> <%= user.name %> ... private show page</h1>
+	<h1> <%=user.name%> ... private show page</h1>
 Need a list of the user's blogs with links to the edit/update page and a delete button ...
 
-			<% for (var i = 0; i < users.blog.length; i++) { %>	
-					<a href="/users/<%=users[i]._id%>/edit/<%=users.blog[i]._id%>"><li>Go to Show Page ... SEE/EDIT: <%=users.blog[i].name%></li></a>
+			<% for (var i = 0; i < user.blog.length; i++) { %>	
+					<a href="/users/<%=user._id%>/edit/<%=user.blog[i]._id%>"><li>Go to Show Page ... SEE/EDIT: <%=user.blog[i].title%></li></a>
 				<form action='' method='DELETE'>
 					<button>Delete</button>
 				</form>
@@ -16,7 +16,7 @@ Need a list of the user's blogs with links to the edit/update page and a delete 
 		
 	Need a logout function >>>>>>> <button>Logout</button>
 	<br>
-	<button><a href="/users/new">CREATE A NEW POST</a></button>		
+	<button><a href="/users/<%=user._id%>/new">CREATE A NEW POST</a></button>		
 	<br>
 	<a href="/allusers">Link back go all users</a>
 </body>
