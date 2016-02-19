@@ -8,12 +8,7 @@ var userSchema = new Schema({
 		name : {type: String, required: true},
 		email  : {type: String, unique: true, required: true},
 		password : {type: String, required: true),
-		blog : {
-
-			create : [blogSchema],
-			publix : [blogSchema]
-
-			}
+		blog : [blogSchema]
 });
 
 //need to  define bcrypt methods here

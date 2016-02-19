@@ -20,13 +20,14 @@ app.use(express.static('public'))
 app.use(morgan('dev'));
 
 
+
 //test index page
 app.get('/', function(req,res){
 	res.render('index.ejs');
 });
 
 //controllers
-
+var allusersController = require('./controllers/allusers.js') 
 
 //mongoose
 mongoose.connect(mongoURI);
