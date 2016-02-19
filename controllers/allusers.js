@@ -13,6 +13,8 @@ router.get('/', function(req,res){
 	});
 });
 
+//logout ??? 
+
 //signup -- for now just link to public show page
 router.post('/', function(req,res){
 	console.log(req.body);
@@ -21,9 +23,11 @@ router.post('/', function(req,res){
 
 	newUser.save(function(err,users){
 		console.log('NEW USER SAVED');
-		res.redirect('/allusers/' + newUser.id); //add a private path
+		res.redirect('/users/' + newUser.id); //add a private path
 	});
 });
+
+//login
 
 //show public user index page -- all users
 router.get('/:id', function(req,res){
