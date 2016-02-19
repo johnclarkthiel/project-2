@@ -1,0 +1,11 @@
+* {
+	margin: 0 auto;
+	padding: 0;
+}
+
+body {
+	background-image: url('http://www.tshirtvortex.net/wp-content/uploads/Director-of-Mustache.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}

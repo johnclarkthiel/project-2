@@ -39,3 +39,21 @@ Blog:
 	})
 
 When a user goes to the new/update/edit page for their blog, when the user saves the blog it should get pushed into the blog.create array. This should show only on the user’s index of blogs page. When the user chooses to publish the blog on the public index and show pages, the post route should find a blog from the blog.create array by its id and push it into the blog.public array. There’s also going to need to be some edit/update functionality for publicly available blogs, so that if the user edits/updates/saves a publicly published blog, the blog will update in the blog.create array AND the blog.public array. Same thing goes for delete … if the user deletes a blog in his/her user-only index or create/edit/update page (which maybe I should separate, now that I think about it), the blog post will be removed form the blog.create array and the blog.public array.  
+
+Project 2 Retro
+
+- What is your project proposal? 
+
+- List your MVP criteria?
+
+- Any plan for your models / data relationships?
+	- Can all users see the index for all of your resource or only access their resource?
+	- Is your resource mutually exclusive to a user?
+		- ex: If you had users and books, can multiple owners have the same book? Can all owners see all books or just their book? Etc.
+
+- What aspects of your approach/attitude can you enhance having experienced and learned from project 1?
+	-Planning
+	-Time management (need to factor lots and lots of time for debugging)
+
+- What are your next steps for today (End of Day Objectives) as well the weekend in order to accomplish your MVP?
+	-Get basic app construct setup (all installations, requriements, and models, views, controllers), get passport to work
