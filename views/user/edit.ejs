@@ -7,14 +7,13 @@
 	EDIT STUFF <br>
 	<%=blogpost.title%>
 
-		<form action='' method='PUT'><br>
+		<form action='/show/<%=blogpost._id%>?_method=PUT' method='PUT'><br>
 		<input type='text' name='title' value='<%=blogpost.title%>'><br>
 		<input type='text' name='hed' value='<%=blogpost.hed%>'><br>
 		<textarea name='dek' rows='50' col='100'><%=blogpost.dek%></textarea><br>
 		<input type='hidden' name='date'>
 		<input type='hidden' name='published' value='false'>
-
 		<button>Save</button>
-
 		</form>
+
 </html>

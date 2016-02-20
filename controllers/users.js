@@ -14,37 +14,16 @@ router.get('/:id', function(req,res) {
 	});
 });
 
-// //SHOW ===> get show/edit page
-// router.get('/:id/edit', function(req,res) {
-// 	User.findById(req.params.id, function(err, user) {
-// 		res.render('user/show.ejs', {
-// 			user : user
-// 		});
-// 	});
-// });
-
-//need an edit page ... goes to id/edit/blog_id
-router.get('/edit/:id', function(req, res){
-	Blog.findById(req.params.id, function(err, blogpost){
-		if (err) {console.log(err); res.send(err); };
-		console.log(blogpost);
-		res.render('user/edit.ejs', {
-			blogpost : blogpost
-		});
-	});
-});
-
-//logout???
 
 //go to CREATE PAGE ===>>> new/create page
 router.get('/:id/new', function(req,res){
 	User.findById(req.params.id, function(err, user){
-
 		res.render('user/new.ejs', {
 			user : user
 		});
 	});
 });
+
 //create new blog post on new/create page
 router.post('/:id/new', function(req,res){
 	User.findById(req.params.id, function(err, user) {
@@ -72,11 +51,41 @@ router.post('/:id/new', function(req,res){
 	});
 });
 
+//need an edit page ... goes to id/edit/blog_id
+router.get('/edit/:id', function(req, res){
+	Blog.findById(req.params.id, function(err, blogpost){
+		if (err) {console.log(err); res.send(err); };
+		// console.log(blogpost);
+		res.render('user/edit.ejs', {
+			blogpost : blogpost
+		});
+	});
+});
+
+//SHOW ===> get show/edit page
+router.get('/show/:id', function(req,res) {
+	Blog.findById(req.params.id, function(err, blogpost) {
+		if (err) {console.log(err); res.send(err); };
+		console.log('BLOGPOST' + blogpost);
+		res.render('user/show.ejs', {
+			blogpost : blogpost
+		});
+	});
+});
+
+
+//logout???
 
 //need a put function here
-
+router.put('/edit/:id', function(req,res){
+	Blog.findByIdAndUpdate(req.params.id, req.body, function(err,blogpost){
+		console.log("REQ PARAMS ID " + req.params.id);
+		if (err) {console.log(err); res.send(err); };
+		res.redirect('/show/' + req.params.id);
+	})
+})
 //need a delete function somewhere
-router.post('/:id/edit/blog_id', function(req,res){
+router.post('', function(req,res){
 	
 });
 

@@ -7,14 +7,18 @@
 Need a list of the user's blogs with links to the edit/update page and a delete button ...
 
 			<% for (var i = 0; i < user.blog.length; i++) { %>	
-					<a href="/users/edit/<%=user.blog[i]._id%>"><li>Go to Show Page ... SEE/EDIT: <%=user.blog[i].title%></li></a> <br>
-					<%=user.blog[i]._id%>
-				<form action='' method='DELETE'>
-					<button>Delete</button>
-				</form>
+				<a href="/users/show/<%=user.blog[i]._id%>"><li>GO TO SHOW PAGE ... SEE: <%=user.blog[i].title%></li></a>
+
+				<a href="/users/edit/<%=user.blog[i]._id%>"><li>Go to EDIT Page ... SEE/EDIT: <%=user.blog[i].title%></li></a> <br>
+				<%=user.blog[i]._id%><br>
+			
+			<form action='' method='DELETE'>
+				<button>Delete</button>
+			</form>
+
 			<%	} %>
 
-		
+	<br>	
 	Need a logout function >>>>>>> <button>Logout</button>
 	<br>
 	<button><a href="/users/<%=user._id%>/new">CREATE A NEW POST</a></button>		
