@@ -7,7 +7,7 @@
 	EDIT STUFF <br>
 	<%=blogpost.title%>
 
-		<form action='/show/<%=blogpost._id%>?_method=PUT' method='PUT'><br>
+		<form action='/users/<%=blogpost._id%>?_method=PUT' method='POST'><br>
 		<input type='text' name='title' value='<%=blogpost.title%>'><br>
 		<input type='text' name='hed' value='<%=blogpost.hed%>'><br>
 		<textarea name='dek' rows='50' col='100'><%=blogpost.dek%></textarea><br>

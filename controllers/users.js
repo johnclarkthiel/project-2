@@ -76,16 +76,16 @@ router.get('/show/:id', function(req,res) {
 
 //logout???
 
-//need a put function here
-router.put('/edit/:id', function(req,res){
+//UPDATE --> need a put function here
+router.put('/:id', function(req,res){
 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err,blogpost){
 		console.log("REQ PARAMS ID " + req.params.id);
 		if (err) {console.log(err); res.send(err); };
-		res.redirect('/show/' + req.params.id);
+		res.redirect('/users/show/' + req.params.id);
 	})
 })
 //need a delete function somewhere
-router.post('', function(req,res){
+router.delete('', function(req,res){
 	
 });
 
