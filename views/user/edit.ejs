@@ -1,8 +1,20 @@
 <html>
 <head>
 	<title>Edit page</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
+	EDIT STUFF <br>
+	<%=blogpost.title%>
 
-</body>
+		<form action='' method='PUT'><br>
+		<input type='text' name='title' value='<%=blogpost.title%>'><br>
+		<input type='text' name='hed' value='<%=blogpost.hed%>'><br>
+		<textarea name='dek' rows='50' col='100'><%=blogpost.dek%></textarea><br>
+		<input type='hidden' name='date'>
+		<input type='hidden' name='published' value='false'>
+
+		<button>Save</button>
+
+		</form>
 </html>
