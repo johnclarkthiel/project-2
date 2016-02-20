@@ -84,10 +84,27 @@ router.put('/:id', function(req,res){
 		res.redirect('/users/show/' + req.params.id);
 	})
 })
+
 //need a delete function somewhere
-router.delete('', function(req,res){
-	
+router.delete('/:id', function(req,res){
+
+	console.log(req.body.blog_id);
+
+		Blog.findByIdAndRemove(req.body.blog_id, function(err,blogpost){
+			if (err) {console.log(err); res.send(err); };
+			console.log('BLOG POST >>>> ' + blogpost);
+			var btitle = blogpost.title;
+			var bid = blogpost.id;
+
+			User.update({}, {$pull: {blog : { title : btitle }}}, {multi : true}, function(err,userb){
+				console.log('USER BLOG >>>>' + userb);
+			
+					if (err) {console.log(err); res.send(err); };
+					res.redirect('/users/' + req.params.id);	
+		});
+	});
 });
+
 
 
 module.exports = router;
@@ -108,4 +125,19 @@ module.exports = router;
 // 		});
 // 	});
 // });
+			// Blog.find(req.params.id, function(err,userblog){
+			// 	console.log('BLOG FIND' + userblog);
+			// 	var deleteArr = [];
+
+			// 	userblog.forEach(function(title){
+			// 		// console.log("FOR EACH " + title._id);
+			// 		deleteArr.push(title._id);
+			// 	})
+
+			// 	User.find({ _id: { $in: deleteArr} } , function(err, users){
+			// 		console.log('USER BLOG' + users);
+			// 		if (err) {console.log(err); res.send(err); };
+			// 		res.redirect('/users/' + req.params.id);
+			// 	});
+			// });
 

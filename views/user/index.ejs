@@ -12,7 +12,8 @@ Need a list of the user's blogs with links to the edit/update page and a delete 
 				<a href="/users/edit/<%=user.blog[i]._id%>"><li>Go to EDIT Page ... SEE/EDIT: <%=user.blog[i].title%></li></a> <br>
 				<%=user.blog[i]._id%><br>
 			
-			<form action='' method='DELETE'>
+			<form action='/users/<%=user._id%>?_method=DELETE' method='POST'>
+				<input type='hidden' name='blog_id' value='<%=user.blog[i]._id%>'>
 				<button>Delete</button>
 			</form>
 
