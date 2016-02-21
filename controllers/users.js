@@ -66,7 +66,7 @@ router.get('/edit/:id', function(req, res){
 router.get('/show/:id', function(req,res) {
 	Blog.findById(req.params.id, function(err, blogpost) {
 		if (err) {console.log(err); res.send(err); };
-		console.log('BLOGPOST' + blogpost);
+		// console.log('BLOGPOST' + blogpost);
 		res.render('user/show.ejs', {
 			blogpost : blogpost
 		});
@@ -81,25 +81,26 @@ router.put('/:id', function(req,res){
 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err,blogpost){
 		console.log("REQ PARAMS ID " + req.params.id);
 		if (err) {console.log(err); res.send(err); };
-		console.log('BLOGGER >>>>> ' + blogpost.title)
-		User.update({'blog.title' : blogpost.title}, {'$set' : {'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed, 'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}}, function(err,user){
+		console.log('BLOGGER >>>>> ' + blogpost);
+
+		User.update({}, {$pull: { blog  :{$elemMatch : {"_id" : req.params.id}}}}, {multi : true}, 
+			function(err,user){
+				if (err) {console.log(err); res.send(err); };
 				console.log('USER BLOG >>>>> ' + user);
-				res.redirect('/users/show/' + req.params.id);		
+
+				User.find({}, function(err,user){
+					console.log(user[0].blog);
+					user[0].blog.push(req.body);
+					user.save(function(err){
+					if (err) {console.log(err); res.send(err); };
+					res.redirect('/users/show/' + req.params.id);	
+				});	
+			});	
 		});
 	});
 });
-//users.update({'blog.title' : "Old Greg"}, {'$set' : { 'blog.$.title' : 'New Greg'}})
-//{ _id : blogpost.blogger}, { blog  :{$elemMatch : {"_id" : req.params.id}}}
-// router.put('/show/:id', function(req,res){
-// 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err, blogpost){
-// 		if (err) {console.log(err); res.send(err); };
-// 		User.findByIdAndUpdate(req.params.id, req.body, function(err,user){
-// 			res.redirect('/allusers/blog/' + req.params.id);
-// 		})
-// 	})
-// })
-
-
+//,{'$set' : {'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed, 'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}}
+//{$set: {blog : {'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed,'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}}}, {multi: false},
 //need a delete function somewhere
 router.delete('/:id', function(req,res){
 
@@ -113,9 +114,8 @@ router.delete('/:id', function(req,res){
 
 			User.update({}, {$pull: {blog : { title : btitle }}}, {multi : true}, function(err,userb){
 				console.log('USER BLOG >>>>' + userb);
-			
-					if (err) {console.log(err); res.send(err); };
-					res.redirect('/users/' + req.params.id);	
+				if (err) {console.log(err); res.send(err); };
+				res.redirect('/users/' + req.params.id);	
 		});
 	});
 });
@@ -155,4 +155,13 @@ module.exports = router;
 			// 		res.redirect('/users/' + req.params.id);
 			// 	});
 			// });
-
+//users.update({'blog.title' : "Old Greg"}, {'$set' : { 'blog.$.title' : 'New Greg'}})
+//{ _id : blogpost.blogger}, { blog  :{$elemMatch : {"_id" : req.params.id}}}
+// router.put('/show/:id', function(req,res){
+// 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err, blogpost){
+// 		if (err) {console.log(err); res.send(err); };
+// 		User.findByIdAndUpdate(req.params.id, req.body, function(err,user){
+// 			res.redirect('/allusers/blog/' + req.params.id);
+// 		})
+// 	})
+// })
