@@ -20,6 +20,7 @@ body {
 
 a {
 	color: white;
+	font-size: 48px;
 }
 
 textarea {
@@ -30,4 +31,12 @@ textarea {
 button {
 	height: 5%;
 	width: 10%;
+}
+
+#public-post {
+	border: 2px solid white;
+	height: 75%;
+	width: 75%;
+	background-color: white;
+	color: black;
 }

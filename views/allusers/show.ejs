@@ -8,9 +8,11 @@
 Need a list of the users blogs so ...
 
 			<% for (var i = 0; i < users.blog.length; i++) { %>	
+				<% if (users.blog[i].published) { %>
 					<a href="/allusers/blog/<%=users.blog[i]._id%>"><li> <%=users.blog[i].title%></li></a><br>
-					<li><%=users.blog[i]._id%></li>
-		
+				<% } else { %>
+					<li>THERE'S NOTHING HERE - THIS HASN'T BEEN PUBLISHED YET!!!!!</li>
+				<% } %>
 			<%	} %><br>
 			
 	<a href="/allusers">Sign up!</a><br>
