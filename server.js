@@ -26,8 +26,19 @@ app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 
 //passport middleware
+var passport = require('passport');
 
+var flash = require('connect-flash');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
 
+app.use(cookieParser);
+app.use(bodyParser());
+
+app.use(session({secret: 'something'}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(fash());
 //index page
 app.get('/', function(req,res){
 	User.find({}, function(err, users){

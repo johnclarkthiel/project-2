@@ -83,22 +83,20 @@ router.put('/:id', function(req,res){
 		if (err) {console.log(err); res.send(err); };
 		console.log('BLOGGER >>>>> ' + blogpost);
 
-		User.update({}, {$pull: { blog  :{$elemMatch : {"_id" : req.params.id}}}}, {multi : true}, 
+		User.find(blogpost.blogger,
+			// {'$set' : {
+			// 	'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed,
+			// 	'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}
+			// }, 
 			function(err,user){
-				if (err) {console.log(err); res.send(err); };
-				console.log('USER BLOG >>>>> ' + user);
-
-				User.find({}, function(err,user){
-					console.log(user[0].blog);
-					user[0].blog.push(req.body);
-					user.save(function(err){
-					if (err) {console.log(err); res.send(err); };
-					res.redirect('/users/show/' + req.params.id);	
-				});	
-			});	
-		});
+			if (err) {console.log(err); res.send(err); };
+			console.log(user.name);
+			console.log('USER' + user);
+			res.redirect('/users/show/' + req.params.id)
+		})
 	});
 });
+//db.users.update({'blog._id' : ObjectId("56ca11b4eef82a913168a770")}, {'$set' : { 'blog.$.title' : 'New Greg', 'blog.$.hed' : 'New Greg'}})
 //,{'$set' : {'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed, 'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}}
 //{$set: {blog : {'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed,'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}}}, {multi: false},
 //need a delete function somewhere
@@ -165,3 +163,15 @@ module.exports = router;
 // 		})
 // 	})
 // })
+
+//		User.update({}, {$pull: { blog  :{$elemMatch : {"_id" : req.params.id}}}}, {multi : true}, 
+			// function(err,user){
+			// 	if (err) {console.log(err); res.send(err); };
+			// 	console.log('USER BLOG >>>>> ' + user);
+
+			// 	User.find({}, function(err,user){
+			// 		console.log(user[0].blog);
+			// 		user[0].blog.push(req.body);
+			// 		if (err) {console.log(err); res.send(err); };
+			// 		res.redirect('/users/show/' + req.params.id);		
+			// 	});	

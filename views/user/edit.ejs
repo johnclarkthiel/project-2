@@ -13,10 +13,11 @@
 			<input type='text' name='hed' value='<%=blogpost.hed%>'><br>
 			<textarea name='dek' rows='50' col='100'><%=blogpost.dek%></textarea><br>
 			<input type='hidden' name='date'>
-			PUBLISH? <input type='text' name='published' value='true'>
+			<input type='text' name='published' value='true'>
+			<input type='hidden' name='blogger' value='<%=blogpost.blogger%>'>
 		<button>Save</button>
 		</form>
-		<%=blogpost.blogger%>
+
 		<input type='hidden' value='<%=blogpost.blogger%>' name='blogger_id'>
 		<input id='publish' type='hidden' value='<%=blogpost.published%>'>
 
