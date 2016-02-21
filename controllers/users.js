@@ -81,6 +81,7 @@ router.put('/:id', function(req,res){
 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err,blogpost){
 		console.log("REQ PARAMS ID " + req.params.id);
 		if (err) {console.log(err); res.send(err); };
+//need to figure out a way to update for public view too
 		res.redirect('/users/show/' + req.params.id);
 	})
 })

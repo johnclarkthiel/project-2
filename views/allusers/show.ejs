@@ -1,17 +1,19 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 	<h1> <%= users.name %> ... public show page?</h1>
 Need a list of the users blogs so ...
 
 			<% for (var i = 0; i < users.blog.length; i++) { %>	
-					<a href="/allusers/<%=users.blog[i]._id%>/<%=users.blog[i]._id%>"><li> <%=users.blog[i].title%></li></a>
+					<a href="/allusers/blog/<%=users.blog[i]._id%>"><li> <%=users.blog[i].title%></li></a><br>
+					<li><%=users.blog[i]._id%></li>
 		
 			<%	} %><br>
 			
-	<a href="/allusers">Link back go all users</a><br>
+	<a href="/allusers">Sign up!</a><br>
 	<a href="/">Link back home</a>
 </body>
 </html>

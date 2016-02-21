@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var User = require('../models/users.js');
+var Blog = require('../models/blogs.js');
 
 //get index page for all authors ... each needs a link to an individual author
 router.get('/', function(req,res){
@@ -34,6 +35,15 @@ router.get('/:id', function(req,res){
 	User.findById(req.params.id, function(err, users){
 		res.render('allusers/show.ejs', {
 			users : users
+		});
+	});
+});
+
+//show each individual page
+router.get('/blog/:id', function(req,res){
+	Blog.findById(req.params.id, function(err, blogpost){
+		res.render('allusers/blogpost.ejs', {
+			blogpost : blogpost 
 		});
 	});
 });
