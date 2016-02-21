@@ -2,21 +2,29 @@
 <head>
 	<title>USER Blog Post Show UPDATE PAGE</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
-	<h1>Blog Post Show Page</h1>
-		<br>
-		<%=blogpost._id%>
-		<br>
-		<%=blogpost.title%>
-		<br>
-		<%=blogpost.hed%>
-		<br>
-		<%=blogpost.dek%>
-	<br>	
-	<button onclick='do something'>Publish</button>
-		
 	<a href="/users/<%=blogpost.blogger%>">Go back your home</a><br>
 	<a href="/">See other blogs!</a>
+		<h1>Blog Post Show Page</h1>
+			<br>
+			<h1><%=blogpost.title%></h1>
+			<h2><%=blogpost.hed%></h2>
+			<br>
+			<div id='private-post'><%=blogpost.dek%></div>
+		<br>	<hr>
+
+	<form action='/users/<%=blogpost._id%>?_method=PUT' method='PUT'>
+			<input type='hidden' name='title' value='<%=blogpost.title%>'><br>
+			<input type='hidden' name='hed' value='<%=blogpost.hed%>'><br>
+			<input type='hidden' name='date'>
+			<input type='hidden' name='published' value='true'>
+			<button id='publishing'>Publish</button>
+	</form>	
+
+	<input id='publish' type='hidden' value='<%=blogpost.published%>'>
+
+	<script type="text/javascript" src='/js/script.js'></script>	
 </body>
 </html>

@@ -2,30 +2,32 @@
 <head>
 	<title>User Page/Private Show Page</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
+	<a href="/allusers">Link back go all users</a>
+	<br>
 	<h1> <%=user.name%> ... private show page</h1>
-Need a list of the user's blogs with links to the edit/update page and a delete button ...
+	<br>
 
 			<% for (var i = 0; i < user.blog.length; i++) { %>	
-				<a href="/users/show/<%=user.blog[i]._id%>"><li>GO TO SHOW PAGE ... SEE: <%=user.blog[i].title%></li></a>
-
-				<a href="/users/edit/<%=user.blog[i]._id%>"><li>Go to EDIT Page ... SEE/EDIT: <%=user.blog[i].title%></li></a> <br>
-				<%=user.blog[i]._id%><br>
+				<br><hr>
+				<a href="/users/show/<%=user.blog[i]._id%>"><li class='userBlogLinks'>GO TO SHOW PAGE ... SEE: <%=user.blog[i].title%></li></a>
+					<br><hr>
+				<a href="/users/edit/<%=user.blog[i]._id%>"><li class='userBlogLinks'>Go to EDIT Page ... SEE/EDIT: <%=user.blog[i].title%></li></a> <br>
 			
 			<form action='/users/<%=user._id%>?_method=DELETE' method='POST'>
 				<input type='hidden' name='blog_id' value='<%=user.blog[i]._id%>'>
 				<button>Delete</button>
 			</form>
-
+				 <br><hr>
 			<%	} %>
 
 	
-	<br>
-	<button><a href="/users/<%=user._id%>/new">CREATE A NEW POST</a></button>		
-	<br>
-	<a href="/allusers">Link back go all users</a>
-	<br>	
-	<button><a href="/">Logout</a></button>
+
+	<button class='funkButtons'><a href="/users/<%=user._id%>/new">CREATE A NEW POST</a></button>		
+	<button class='funkButtons'><a href="/">Logout</a></button><br>
+	
+	<script type="text/javascript" src='/js/script.js'></script>	
 </body>
 </html>

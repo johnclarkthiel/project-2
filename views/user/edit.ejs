@@ -2,19 +2,30 @@
 <head>
 	<title>Edit page</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
 	EDIT STUFF <br>
 	<%=blogpost.title%>
 
 		<form action='/users/<%=blogpost._id%>?_method=PUT' method='POST'><br>
-		<input type='text' name='title' value='<%=blogpost.title%>'><br>
-		<input type='text' name='hed' value='<%=blogpost.hed%>'><br>
-		<textarea name='dek' rows='50' col='100'><%=blogpost.dek%></textarea><br>
-		<input type='hidden' name='date'>
-		<input type='hidden' name='published' value='false'>
+			<input type='text' name='title' value='<%=blogpost.title%>'><br>
+			<input type='text' name='hed' value='<%=blogpost.hed%>'><br>
+			<textarea name='dek' rows='50' col='100'><%=blogpost.dek%></textarea><br>
+			<input type='hidden' name='date'>
+			<input type='hidden' name='published' value='false'>
 		<button>Save</button>
 		</form>
 
-		<button onclick='do something'>Publish</button>
+	<form action='/users/<%=blogpost._id%>?_method=PUT' method='PUT'>
+			<input type='hidden' name='title' value='<%=blogpost.title%>'><br>
+			<input type='hidden' name='hed' value='<%=blogpost.hed%>'><br>
+			<input type='hidden' name='date'>
+			<input type='hidden' name='published' value='true'>
+			<button id='publishing'>Publish</button>
+	</form>	
+
+		<input id='publish' type='hidden' value='<%=blogpost.published%>'>
+
+		<script type="text/javascript" src='/js/script.js'></script>	
 </html>

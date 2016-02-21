@@ -2,6 +2,7 @@
 <head>
 	<title>Create a new blog post page</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
 	<h1>Create a new post, <%=user.name%> ... It will not matter</h1>
@@ -17,7 +18,16 @@
 
 		</form>
 		<br>
-		<button onclick='do something'>Publish</button>
+	<form action='/users/<%=blogpost._id%>?_method=PUT' method='PUT'>
+			<input type='hidden' name='title' value='<%=blogpost.title%>'><br>
+			<input type='hidden' name='hed' value='<%=blogpost.hed%>'><br>
+			<input type='hidden' name='date'>
+			<input type='hidden' name='published' value='true'>
+			<button id='publishing'>Publish</button>
+	</form>	
 
+		<input id='publish' type='hidden' value='<%=blogpost.published%>'>
+
+		<script type="text/javascript" src='/js/script.js'></script>	
 </body>
 </html>

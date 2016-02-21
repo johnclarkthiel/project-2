@@ -20,7 +20,7 @@ body {
 
 a {
 	color: white;
-	font-size: 48px;
+	font-size: 24px;
 }
 
 textarea {
@@ -33,10 +33,25 @@ button {
 	width: 10%;
 }
 
-#public-post {
+#public-post, #private-post {
 	border: 2px solid white;
 	height: 75%;
 	width: 75%;
 	background-color: white;
 	color: black;
+}
+
+.userBlogLinks {
+	font-size: 24px;
+	display: block;
+	float: left;
+}
+
+.funkButtons {
+	font-size: 24px;
+		display: block;
+	float: left;
+/*	clear: both;*/
+	height: 25%;
+	width: 25%;
 }
