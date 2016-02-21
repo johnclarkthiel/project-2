@@ -1,6 +1,7 @@
 <html>
 <head>
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 	<h1>All bloggers</h1>
@@ -18,6 +19,7 @@
 		<ul>
 			<% for (var i = 0; i < users.length; i++) { %>	
 					<a href="/allusers/<%=users[i]._id%>"><li> <%=users[i].name%></li></a> 
+			<% } %>
 		</ul>
 </body>
 </html>
