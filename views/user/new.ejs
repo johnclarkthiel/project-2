@@ -17,16 +17,6 @@
 			<button>Save</button>
 
 		</form>
-		<br>
-	<form action='/users/<%=blogpost._id%>?_method=PUT' method='PUT'>
-			<input type='hidden' name='title' value='<%=blogpost.title%>'><br>
-			<input type='hidden' name='hed' value='<%=blogpost.hed%>'><br>
-			<input type='hidden' name='date'>
-			<input type='hidden' name='published' value='true'>
-			<button id='publishing'>Publish</button>
-	</form>	
-
-		<input id='publish' type='hidden' value='<%=blogpost.published%>'>
 
 		<script type="text/javascript" src='/js/script.js'></script>	
 </body>

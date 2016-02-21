@@ -81,10 +81,24 @@ router.put('/:id', function(req,res){
 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err,blogpost){
 		console.log("REQ PARAMS ID " + req.params.id);
 		if (err) {console.log(err); res.send(err); };
-//need to figure out a way to update for public view too
-		res.redirect('/users/show/' + req.params.id);
-	})
-})
+		console.log('BLOGGER >>>>> ' + blogpost.title)
+		User.update({'blog.title' : blogpost.title}, {'$set' : {'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed, 'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}}, function(err,user){
+				console.log('USER BLOG >>>>> ' + user);
+				res.redirect('/users/show/' + req.params.id);		
+		});
+	});
+});
+//users.update({'blog.title' : "Old Greg"}, {'$set' : { 'blog.$.title' : 'New Greg'}})
+//{ _id : blogpost.blogger}, { blog  :{$elemMatch : {"_id" : req.params.id}}}
+// router.put('/show/:id', function(req,res){
+// 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err, blogpost){
+// 		if (err) {console.log(err); res.send(err); };
+// 		User.findByIdAndUpdate(req.params.id, req.body, function(err,user){
+// 			res.redirect('/allusers/blog/' + req.params.id);
+// 		})
+// 	})
+// })
+
 
 //need a delete function somewhere
 router.delete('/:id', function(req,res){

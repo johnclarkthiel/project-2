@@ -15,11 +15,11 @@
 			<div id='private-post'><%=blogpost.dek%></div>
 		<br>	<hr>
 
-	<form action='/users/<%=blogpost._id%>?_method=PUT' method='PUT'>
+	<form action='/users/show/<%=blogpost._id%>?_method=PUT' method='PUT'>
 			<input type='hidden' name='title' value='<%=blogpost.title%>'><br>
 			<input type='hidden' name='hed' value='<%=blogpost.hed%>'><br>
 			<input type='hidden' name='date'>
-			<input type='hidden' name='published' value='true'>
+			<input type='text' name='published' value='true'>
 			<button id='publishing'>Publish</button>
 	</form>	
 
