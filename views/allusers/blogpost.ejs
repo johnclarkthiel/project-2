@@ -14,13 +14,26 @@
 		<h2><%=blogpost.hed%></h2>
 		<div id="public-post"><%=blogpost.dek%></div>
 		<br>
+
 		<% if (blogpost.published) { %>
-		<form  action='need a path' method='POST'>
-			<textarea id='comment-form' placeholder='If you care to comment, this is the place to do it...'></textarea>
+		<form  action='allusers/blog/:id' method='POST'>
+			<input type='hidden' name='title' value='<%=blogpost.title%>'>
+			<input type='hidden' name='hed' value='<%=blogpost.hed%>'>
+			<input type='hidden' name='dek' value='<%=blogpost.dek%>'>
+			<input type='hidden' name='date'>
+			<input type='hidden' name='published' value='true'>
+			<input type='hidden' name='blogger' value='<%=blogpost.blogger%>'>
+			<textarea id='comment-form' name='comment' placeholder='If you care to comment, this is the place to do it...'></textarea>
 			<br>
 			<button>Post your comment</button>
 		</form>
-		<% } %>
+		<br>
+
+		<div id='comments-container'>
+			<% for (var i = 0; i < blogpost.comments.length; i++) { %>
+				<div class='comments'><%=blogpost.comments[i]%></div>
+			<% } %>
+		</div>	
 
 	<script type="text/javascript" src='/js/script.js'></script>	
 </body>
