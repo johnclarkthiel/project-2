@@ -1,7 +1,7 @@
 console.log('HELLO!');
 $(function() {
 
-$(".navadiv").click(function() {
+$(".navdiv").click(function() {
   window.location = $(this).find("a").attr("href"); 
   return false;
 });

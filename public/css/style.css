@@ -28,6 +28,12 @@ textarea {
 	width: 80%;
 }
 
+#comment-form {
+	height: 10%;
+	width: 70%;
+	clear: both;
+}
+
 button {
 	height: 5%;
 	width: 10%;
@@ -123,3 +129,4 @@ nav {
 	float: left;
 	text-align: center;
 }
+

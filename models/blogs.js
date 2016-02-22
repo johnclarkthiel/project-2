@@ -10,6 +10,7 @@ newBlog.add({
 		dek : {type : String, requried: true},
 		date : {type : Date, default: Date.now},
 		published : {type: Boolean},
+		comments : {type : String},
 		blogger : [userSchema]
 });
 
