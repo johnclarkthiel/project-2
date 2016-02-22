@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
-
+var mongoose = require('mongoose');
 var User = require('../models/users.js');
 var Blog = require('../models/blogs.js');
+mongoose.set('debug', true);
 
 var passport = require('passport');
 
@@ -110,17 +111,26 @@ router.put('/:id', function(req,res){
 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err,blogpost){
 		console.log("REQ PARAMS ID " + req.params.id);
 		if (err) {console.log(err); res.send(err); };
-		console.log('BLOGGER >>>>> ' + blogpost);
+		console.log('BLOGGER >>>>> ' + blogpost.id);
 
 		User.find(blogpost.blogger,
 			// {'$set' : {
-			// 	'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed,
-			// 	'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}
+			// 	'blog.$.title' : blogpost.title, 'blog.$.published' : blogpost.published}
 			// }, 
 			function(err,user){
 			if (err) {console.log(err); res.send(err); };
-			// var blogid = user.blog.id(req.params.id); can't read this ... says cannot read blog id of undefined
-			console.log('USER' + user);
+			console.log('USER LENGTH' + user[0].blog);
+			var bloggy = user[0].blog;
+			console.log(bloggy.length);
+			console.log('BLOGGY ID ' + bloggy[0].id);
+			for (var i = 0; i < bloggy.length; i++) {
+				if (bloggy[i].id == req.params.id) {
+					bloggy[i].title = blogpost.title;
+					bloggy[i].hed = blogpost.hed;
+					bloggy[i].dek = blogpost.dek;
+					bloggy[i].published = blogpost.published;
+				}//<<<<<<< end if
+			}//<<<<<<<< end for
 			res.redirect('/users/show/' + req.params.id)
 		})
 	});
