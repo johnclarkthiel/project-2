@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
-// var bcrypt = require('bcrpyt-nodejs');
+
+var bcrypt = require('bcrypt-nodejs');
 
 //require blogs schema
 var blogSchema = require('./blogs.js').schema;
@@ -15,11 +16,13 @@ userSchema.add({
 });
 
 //need to  define bcrypt methods here
+userSchema.methods.generateHash = function(password) {
+	return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+}
 
-
-
-
-
+userSchema.methods.validPassword = function(password) {
+	return bcrypt.compareSync(password, this.password);
+}
 
 
 var User = mongoose.model('User', userSchema);

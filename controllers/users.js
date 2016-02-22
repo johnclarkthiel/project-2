@@ -4,7 +4,9 @@ var router = express.Router();
 var User = require('../models/users.js');
 var Blog = require('../models/blogs.js');
 
-//INDEX ==>>>> private show page for user=
+var passport = require('passport');
+
+// INDEX ==>>>> private show page for user=
 router.get('/:id', function(req,res) {
 	User.findById(req.params.id, function(err, user){
 		// console.log(user);
@@ -14,6 +16,11 @@ router.get('/:id', function(req,res) {
 	});
 });
 
+//logout
+router.get('/:id/logout', function(req,res){
+	req.logout();
+	res.redirect('/allusers');
+});
 
 //go to CREATE PAGE ===>>> new/create page
 router.get('/:id/new', function(req,res){
@@ -74,8 +81,6 @@ router.get('/show/:id', function(req,res) {
 });
 
 
-//logout???
-
 //UPDATE --> need a put function here
 router.put('/:id', function(req,res){
 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err,blogpost){
@@ -90,7 +95,8 @@ router.put('/:id', function(req,res){
 			// }, 
 			function(err,user){
 			if (err) {console.log(err); res.send(err); };
-			console.log(user.name);
+			var blogid = user.blog.id(req.params.id);
+			console.log(blogid);
 			console.log('USER' + user);
 			res.redirect('/users/show/' + req.params.id)
 		})
@@ -118,6 +124,16 @@ router.delete('/:id', function(req,res){
 	});
 });
 
+//login check
+function loggedIn(req,res,next){
+	console.log('LOGGED IN CHECKER');
+	if (req.isAuthenticated()) {
+		console.log('YAY, AUTHENTICATED/LOGGED IN');
+		return next();
+	} else {
+		res.redirect('/');
+	}
+}
 
 
 module.exports = router;

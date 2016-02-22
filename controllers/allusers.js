@@ -4,6 +4,8 @@ var router = express.Router();
 var User = require('../models/users.js');
 var Blog = require('../models/blogs.js');
 
+var passport = require('passport');
+
 //get index page for all authors ... each needs a link to an individual author
 router.get('/', function(req,res){
 	// res.send('All users index page');
@@ -14,18 +16,30 @@ router.get('/', function(req,res){
 	});
 });
 
-//logout ??? 
+//logout
+router.get('/logout', function(req,res){
+	console.log("LOGOUT PRESSED");
+	req.logout();
+	res.redirect('/');
+});
 
 //signup -- for now just link to public show page
-router.post('/', function(req,res){
-	console.log(req.body);
-	var newUser = new User(req.body);
-	console.log('NEW USER ' + newUser);
+// router.post('/', function(req,res){
+// 	console.log(req.body);
+// 	var newUser = new User(req.body);
+// 	console.log('NEW USER ' + newUser);
 
-	newUser.save(function(err,users){
-		console.log('NEW USER SAVED');
-		res.redirect('/users/' + newUser.id); //add a private path
-	});
+// 	newUser.save(function(err,users){
+// 		console.log('NEW USER SAVED');
+// 		res.redirect('/users/' + newUser.id); //add a private path
+// 	});
+// });
+
+//signup with authentication
+router.post('/', passport.authenticate('local-signup', {
+	failureRedirect: '/'}), function(req,res) {
+		console.log("SUCCESS!");
+		res.redirect('/users/' + req.user.id);
 });
 
 //login
