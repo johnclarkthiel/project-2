@@ -111,34 +111,37 @@ router.put('/:id', function(req,res){
 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err,blogpost){
 		console.log("REQ PARAMS ID " + req.params.id);
 		if (err) {console.log(err); res.send(err); };
-		console.log('BLOGGER >>>>> ' + blogpost.id);
+		console.log('BLOGGER >>>>> ' + blogpost.published);
 
-		User.find(blogpost.blogger,
+		User.findOne(blogpost.blogger,
 			// {'$set' : {
 			// 	'blog.$.title' : blogpost.title, 'blog.$.published' : blogpost.published}
 			// }, 
 			function(err,user){
 			if (err) {console.log(err); res.send(err); };
-			console.log('USER LENGTH' + user[0].blog);
-			var bloggy = user[0].blog;
+			console.log('USER LENGTH' + user.blog);
+			var bloggy = user.blog;
 			console.log(bloggy.length);
-			console.log('BLOGGY ID ' + bloggy[0].id);
+			// console.log('BLOGGY ID ' + bloggy.id);
 			for (var i = 0; i < bloggy.length; i++) {
 				if (bloggy[i].id == req.params.id) {
-					bloggy[i].title = blogpost.title;
-					bloggy[i].hed = blogpost.hed;
-					bloggy[i].dek = blogpost.dek;
-					bloggy[i].published = blogpost.published;
+					user.blog[i].title = blogpost.title;
+					console.log(user.blog[i].title);
+					user.blog[i].hed = blogpost.hed;
+					console.log(user.blog[i].hed);
+					user.blog[i].dek = blogpost.dek;
+					console.log(user.blog[i].dek);
+					user.blog[i].published = blogpost.published;
+					console.log(user.blog[i].published);
 				}//<<<<<<< end if
 			}//<<<<<<<< end for
-			res.redirect('/users/show/' + req.params.id)
-		})
+			user.save(function (err) {
+				res.redirect('/users/show/' + req.params.id)
+			});
+		});
 	});
 });
-//db.users.update({'blog._id' : ObjectId("56ca11b4eef82a913168a770")}, {'$set' : { 'blog.$.title' : 'New Greg', 'blog.$.hed' : 'New Greg'}})
-//,{'$set' : {'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed, 'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}}
-//{$set: {blog : {'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed,'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}}}, {multi: false},
-//need a delete function somewhere
+
 router.delete('/:id', function(req,res){
 
 	console.log(req.body.blog_id);
@@ -224,3 +227,8 @@ module.exports = router;
 			// 		if (err) {console.log(err); res.send(err); };
 			// 		res.redirect('/users/show/' + req.params.id);		
 			// 	});	
+
+//db.users.update({'blog._id' : ObjectId("56ca11b4eef82a913168a770")}, {'$set' : { 'blog.$.title' : 'New Greg', 'blog.$.hed' : 'New Greg'}})
+//,{'$set' : {'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed, 'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}}
+//{$set: {blog : {'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed,'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}}}, {multi: false},
+//need a delete function somewhere
