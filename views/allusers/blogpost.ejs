@@ -5,12 +5,16 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
-<h1><%=blogpost.title%></h1>
-	<h2><%=blogpost.hed%></h2>
+	<nav>
+		<div class='navdiv'><a href="/allusers">Go back to the signup/login page</a></div>
+		<div class='navdiv'><a href="/allusers/<%=blogpost.blogger%>">Go back to the author's page</a></div>
+	</nav>
+	
+		<h1><%=blogpost.title%></h1>
+		<h2><%=blogpost.hed%></h2>
+		<div id="public-post"><%=blogpost.dek%></div>
 
-	<div id="public-post"><%=blogpost.dek%></div>
 
-	<a href="/allusers/<%=blogpost.blogger%>">Back to author's page</a>
 	<script type="text/javascript" src='/js/script.js'></script>	
 </body>
 </html>

@@ -5,19 +5,21 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
-	<h1> <%= users.name %> ... public show page?</h1>
-Need a list of the users blogs so ...
+	<nav>
+		<div class='navdiv'><a href="/">Go back to home page</a></div>
+		<div class='navdiv'><a href="/allusers">Go to the signup/page</a></div>
+	</nav>
+	<h1> <%= users.name %>'s Blog </h1>
 
 			<% for (var i = 0; i < users.blog.length; i++) { %>	
 				<% if (users.blog[i].published) { %>
+				Post <%=[i+1]%>:
 					<a href="/allusers/blog/<%=users.blog[i]._id%>"><li> <%=users.blog[i].title%></li></a><br>
 				<% } else { %>
 					<li>THERE'S NOTHING HERE - THIS HASN'T BEEN PUBLISHED YET!!!!!</li>
 				<% } %>
 			<%	} %><br>
 			
-	<a href="/allusers">Sign up or Log in (if already a user)</a><br>
-	<a href="/">Link back home</a>
 	<script type="text/javascript" src='/js/script.js'></script>	
 </body>
 </html>

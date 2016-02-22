@@ -5,17 +5,20 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
+	<nav>
+		<div class='navdiv'><a href="/users/<%=user._id%>">Go back to your home page</a></div>
+		<div class='navdiv'><a href="/">See other blogs</a></div>
+	</nav>
+
 	<h1>Create a new post, <%=user.name%> ... It will not matter</h1>
-	Somehow need to add a blog ID for these so that you can edit each user's blog
 		<form action='/users/<%=user._id%>/new' method='POST'><br>
 			<input type='text' name='title' placeholder='BLOG POST TITLE'><br>
 			<input type='text' name='hed' placeholder='SUB-TITLE'><br>
 			<textarea name='dek' rows='50' col='100' placeholder='write your stupid words in here'></textarea><br>
 			<input type='hidden' name='date'>
-			Do you want published (true or false)?<input type='text' name='published' value='false'>
+			<input type='hidden' name='published' value='false'>
 			<input type='hidden' name='blogger' value='<%=user._id%>'>
 			<button>Save</button>
-
 		</form>
 
 		<script type="text/javascript" src='/js/script.js'></script>	

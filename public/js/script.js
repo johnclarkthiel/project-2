@@ -1,16 +1,14 @@
 console.log('HELLO!');
 $(function() {
 
-var $published = $('#publish').val();
-// console.log("IS IT PUBLISHED ... " + $published);
+$(".navadiv").click(function() {
+  window.location = $(this).find("a").attr("href"); 
+  return false;
+});
 
-// var $publishing = $('#publishing');
-// console.log($publishing);
-
-// $publishing.click(function(){
-// 	$published = true;
-// 	console.log("IS IT PUBLISHED ... " + $published);
-// })
-
+$(".funk").click(function() {
+  window.location = $(this).find("a").attr("href"); 
+  return false;
+});
 
 }); //<<<END function on load

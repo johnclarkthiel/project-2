@@ -111,17 +111,15 @@ router.put('/:id', function(req,res){
 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err,blogpost){
 		console.log("REQ PARAMS ID " + req.params.id);
 		if (err) {console.log(err); res.send(err); };
-		console.log('BLOGGER >>>>> ' + blogpost.published);
+		console.log('BLOGGER >>>>> ' + blogpost.blogger);
 
-		User.findOne(blogpost.blogger,
-			// {'$set' : {
-			// 	'blog.$.title' : blogpost.title, 'blog.$.published' : blogpost.published}
-			// }, 
+		User.findById(blogpost.blogger,
+ 
 			function(err,user){
 			if (err) {console.log(err); res.send(err); };
-			console.log('USER LENGTH' + user.blog);
+			console.log('USER Blog' + user.blog);
 			var bloggy = user.blog;
-			console.log(bloggy.length);
+			console.log('Bloggy ' + bloggy);
 			// console.log('BLOGGY ID ' + bloggy.id);
 			for (var i = 0; i < bloggy.length; i++) {
 				if (bloggy[i].id == req.params.id) {

@@ -5,25 +5,41 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
-	<a href="/users/<%=blogpost.blogger%>">Go back your home</a><br>
-	<a href="/">See other blogs!</a>
-		<h1>Blog Post Show Page</h1>
-			<br>
+	<nav>
+		<div class='navdiv'><a href="/users/<%=blogpost.blogger%>">Go back to your home page</a></div>
+		<div class='navdiv'><a href="/">See other blogs</a></div>
+	</nav>
 			<h1><%=blogpost.title%></h1>
 			<h2><%=blogpost.hed%></h2>
 			<br>
 			<div id='private-post'><%=blogpost.dek%></div>
 		<br>	<hr>
-
-<!-- 	<form action='/users/show/<%=blogpost._id%>?_method=PUT' method='PUT'>
-			<input type='hidden' name='title' value='<%=blogpost.title%>'><br>
-			<input type='hidden' name='hed' value='<%=blogpost.hed%>'><br>
+		<div class='ispublished'>
+				<% if (blogpost.published) { %>
+					<p>Published Status: Published!</p>
+				<% } else { %>
+					<p>Published Status: Not published!</p>
+			<%	}	%>
+		</div>
+		<form class='compress' action='/users/<%=blogpost._id%>?_method=PUT' method='POST'>
+			<input type='hidden' name='title' value='<%=blogpost.title%>'>
+			<input type='hidden' name='hed' value='<%=blogpost.hed%>'>
+			<input type='hidden' name='dek' value='<%=blogpost.dek%>'>
 			<input type='hidden' name='date'>
-			<input type='text' name='published' value='true'>
-			<button id='publishing'>Publish</button>
-	</form>	
+			<input type='hidden' name='published' value='true'>
+			<input type='hidden' name='blogger' value='<%=blogpost.blogger%>'>
+			<button class='editButtons'>Publish</button>
+		</form><br> 
 
-	<input id='publish' type='hidden' value='<%=blogpost.published%>'> -->
+		<form class='compress' action='/users/<%=blogpost._id%>?_method=PUT' method='POST'>
+			<input type='hidden' name='title' value='<%=blogpost.title%>'>
+			<input type='hidden' name='hed' value='<%=blogpost.hed%>'>
+			<input type='hidden' name='dek' value='<%=blogpost.dek%>'>
+			<input type='hidden' name='date'>
+			<input type='hidden' name='published' value='false'>
+			<input type='hidden' name='blogger' value='<%=blogpost.blogger%>'>
+			<button class='editButtons'>Take down post</button>
+		</form> 
 
 	<script type="text/javascript" src='/js/script.js'></script>	
 </body>

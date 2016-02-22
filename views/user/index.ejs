@@ -4,30 +4,35 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
-<body>
-	<a href="/allusers">Link back go all users</a>
+<body id='userindex'>
+	<nav>
+		<div class='navdiv'><a href="/">Go back to the home page</a></div>
+		<div class='navdiv'><a href="/allusers">Go back to sign up/login</a></div>
+	</nav>
 	<br>
-	<h1> <%=user.name%> ... private show page</h1>
+	<button class='funkButtons'><a href="/users/<%=user._id%>/logout">LOGOUT</a></button>
+	<button class='funkButtons'><a href="/users/<%=user._id%>/new">CREATE POST</a></button><br>		
+	
+	<h1> Weclome, <%=user.name%>!</h1>
 	<br>
 
-			<% for (var i = 0; i < user.blog.length; i++) { %>	
-				<br><hr>
-				<a href="/users/show/<%=user.blog[i]._id%>"><li class='userBlogLinks'>GO TO SHOW PAGE ... SEE: <%=user.blog[i].title%></li></a>
-					<br><hr>
-				<a href="/users/edit/<%=user.blog[i]._id%>"><li class='userBlogLinks'>Go to EDIT Page ... SEE/EDIT: <%=user.blog[i].title%></li></a> <br>
-			
+		<% for (var i = 0; i < user.blog.length; i++) { %>	
+			<br><hr>
+			<div class='funk'><a href="/users/show/<%=user.blog[i]._id%>"><li class='userBlogLinks'>SEE: <%=user.blog[i].title%></li></a></div>
+			<div class='funk'><a href="/users/edit/<%=user.blog[i]._id%>"><li class='userBlogLinks'>EDIT: <%=user.blog[i].title%></li></a></div><br>
+			<div class='ispublished'>
+				<% if (user.blog[i].published) { %>
+					<p>Published Status: Published!</p>
+				<% } else { %>
+					<p>Published Status: Not published!</p>
+			<%	}	%>
+			</div>
 			<form action='/users/<%=user._id%>?_method=DELETE' method='POST'>
 				<input type='hidden' name='blog_id' value='<%=user.blog[i]._id%>'>
-				Delete <%=user.blog[i].title%>
-				<button>You won't</button>
+				<button>Delete: <%=user.blog[i].title%></button>
 			</form>
-				 <br><hr>
-			<%	} %>
-
-	
-
-	<button class='funkButtons'><a href="/users/<%=user._id%>/new">CREATE A NEW POST</a></button>		
-	<button class='funkButtons'><a href="/users/<%=user._id%>/logout">Logout</a></button><br>
+			 <br><hr>
+		<%	} %>
 	
 	<script type="text/javascript" src='/js/script.js'></script>	
 </body>

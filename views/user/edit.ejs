@@ -5,18 +5,22 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
-	EDIT STUFF <br>
-	<%=blogpost.title%>
+	<nav>
+		<div class='navdiv'><a href="/users/<%=blogpost.blogger%>">Go back your home</a></div>
+		<div class='navdiv'><a href="/">See other blogs!</a></div>
+	</nav>
+	<h1>EDIT STUFF: <%=blogpost.title%> </h1>
 
 		<form action='/users/<%=blogpost._id%>?_method=PUT' method='POST'><br>
 			<input type='text' name='title' value='<%=blogpost.title%>'><br>
 			<input type='text' name='hed' value='<%=blogpost.hed%>'><br>
 			<textarea name='dek' rows='50' col='100'><%=blogpost.dek%></textarea><br>
 			<input type='hidden' name='date'>
-			<input type='text' name='published' value='false'>
+			<input type='hidden' name='published' value='<%=blogpost.published%>'>
 			<input type='hidden' name='blogger' value='<%=blogpost.blogger%>'>
-		<button>Save</button>
+			<button class='editButtons'>Save</button>
 		</form>
+
 
 		<input type='hidden' value='<%=blogpost.blogger%>' name='blogger_id'>
 		<input id='publish' type='hidden' value='<%=blogpost.published%>'>
