@@ -18,8 +18,8 @@
 			
 			<form action='/users/<%=user._id%>?_method=DELETE' method='POST'>
 				<input type='hidden' name='blog_id' value='<%=user.blog[i]._id%>'>
-				<%=user.blog[i]._id%>
-				<button>Delete</button>
+				Delete <%=user.blog[i].title%>
+				<button>You won't</button>
 			</form>
 				 <br><hr>
 			<%	} %>

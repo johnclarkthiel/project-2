@@ -6,21 +6,45 @@ var Blog = require('../models/blogs.js');
 
 var passport = require('passport');
 
-// INDEX ==>>>> private show page for user=
-router.get('/:id', function(req,res) {
-	User.findById(req.params.id, function(err, user){
-		// console.log(user);
-		res.render('user/index.ejs', {
-			user : user
-		});
-	});
-});
+// //restricted access 
+router.get('/', function(req,res){
+	res.locals.login = req.isAuthenticated();
+	User.findById(req.params.id, function(err,user){
+		if (err) {console.log(err); res.send(err); };
+		res.render('users/index.ejs', {
+			user : user 
+		})
+	})
+})
 
 //logout
 router.get('/:id/logout', function(req,res){
 	req.logout();
 	res.redirect('/allusers');
 });
+
+
+// INDEX ==>>>> private show page for user=
+// router.get('/:id', function(req,res) {
+// 	User.findById(req.params.id, function(err, user){
+// 		// console.log(user);
+// 		res.render('user/index.ejs', {
+// 			user : user
+// 		});
+// 	});
+// });
+
+//show page for user only
+router.get('/:id', loggedIn, function(req,res){
+	if (req.params.id == req.user.id) {
+		User.findById(req.params.id, function(err, user){
+			res.render('user/index.ejs', {
+				user : user
+			});
+		});
+	}//<< if close
+});
+
 
 //go to CREATE PAGE ===>>> new/create page
 router.get('/:id/new', function(req,res){
@@ -95,8 +119,7 @@ router.put('/:id', function(req,res){
 			// }, 
 			function(err,user){
 			if (err) {console.log(err); res.send(err); };
-			var blogid = user.blog.id(req.params.id);
-			console.log(blogid);
+			// var blogid = user.blog.id(req.params.id); can't read this ... says cannot read blog id of undefined
 			console.log('USER' + user);
 			res.redirect('/users/show/' + req.params.id)
 		})
