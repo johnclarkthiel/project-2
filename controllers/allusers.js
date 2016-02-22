@@ -43,6 +43,11 @@ router.post('/', passport.authenticate('local-signup', {
 });
 
 //login
+router.post('/login', passport.authenticate('local-login',{
+	failureRedirect: '/'}), function(req,res){
+	console.log('LOGGGED IN, YA');
+	res.redirect('/users/' + req.user.id);
+});
 
 //show public user index page -- all users
 router.get('/:id', function(req,res){
