@@ -3,7 +3,7 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var User = require('../models/users.js');
 var Blog = require('../models/blogs.js');
-mongoose.set('debug', true);
+mongoose.set('debug', true); //was going insane trying to figure out update/put until a kind fellow on Stack O. advised using this
 
 var passport = require('passport');
 

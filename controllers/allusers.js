@@ -69,11 +69,17 @@ router.get('/blog/:id', function(req,res){
 
 //put for comments
 router.put('/blog/:id', function(req,res){
-	Blogs.findByIdAndUpdate(req.params.id, req.body, function(err, blogpost){
+	Blog.findById(req.params.id, function(err, blogpost){
 		if (err) {console.log(err); res.send(err); }
-		res.redirect('/blog/' + req.params.id)
-	})
-})
+		console.log(blogpost.comments);
+		console.log(req.body.comments);
+		blogpost.comments.push(req.body.comments);
+		blogpost.save(function(err){
+			if (err) {console.log(err); res.send(err);}
+			res.redirect('/allusers/blog/' + req.params.id);
+		});
+	});
+});
 
 
 
