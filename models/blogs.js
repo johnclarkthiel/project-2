@@ -16,3 +16,5 @@ newBlog.add({
 
 var Blog = mongoose.model('Blog', newBlog);
 module.exports = Blog;
+
+//add imagee and link fields

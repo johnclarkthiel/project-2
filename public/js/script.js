@@ -11,6 +11,8 @@ $(".funk").click(function() {
   return false;
 });
 
+var $mrGnome = $('audio')[0];
 
+$mrGnome.play();
 
 }); //<<<END function on load

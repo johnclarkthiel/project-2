@@ -3,6 +3,10 @@
 	padding: 0;
 }
 
+html	{
+	background: silver;
+}
+
 body {
 	background-image: url('http://www.tshirtvortex.net/wp-content/uploads/Director-of-Mustache.jpg');
 	background-size: cover;
@@ -16,6 +20,10 @@ body {
  	font-family: Arial;
  	text-align: center;
  	text-shadow: 1px 1px black;
+}
+
+#showh1{
+	margin-top: 5%;
 }
 
 a {
@@ -43,8 +51,8 @@ textarea {
 }
 
 button {
-	height: 5%;
-	width: 10%;
+	height: 10%;
+	width: 20%;
 	border: 5px inset silver;
 }
 
@@ -73,6 +81,7 @@ button {
 	margin-left: 1%;
 	margin-right: 1%;
 	border: 5px outset gold;
+	text-align: center;
 }
 
 #userindex {
@@ -93,6 +102,8 @@ button {
 	clear: both;
 	text-align: center;
 	border: 5px inset silver;
+	width: 100%;
+	text-align: center;
 }
 
 .compress {
@@ -105,9 +116,10 @@ nav {
 	padding: 0;
 	width: 100%;
 	border: 5px outset gold;
-	background: grey;
+	background: silver;
 	position: fixed;
 	z-index: +1;
+	margin-bottom: 5%;
 }
 
 .navdiv > a {
@@ -125,15 +137,19 @@ nav {
 }
 
 .ispublished {
-	border: 1px solid gold;
-	background-color: grey;
-	width: 25%;
+	border: 5px outset gold;
+	background-color: silver;
+	height: 10%;
+	width: 100%;
+	height: 7.5%;
 	text-align: left;
 	margin: 0;
+	text-align: center;
+	margin-top: 5%;
 }
 
 .funk {
-	width: 48%;
+	width: 100%;
 	height: 5%;
 	border: 5px inset gold;
 	background-color: silver;
@@ -147,14 +163,45 @@ input {
 	border: 5px inset gold;
 }
 
-@media (max-width: 800px) {
+#banner {
+	height: 15%;
+	width: calc(100%-1em);
+	border: 10px outset gold;
+	background-color: silver;
+	animation-name: lights;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+	margin-bottom: 10%;
+	font-size: 70%;
+}
+
+
+@keyframes lights {
+	0% { border: 10px outset gold;} 
+	25%  { border: 10px inset silver;} 
+	50% {border: 10px outset gold;} 
+	75%  {border: 10px inset silver;} 
+	100%  {border: 10px outset gold;} 
+} 
+
+input:placeholder-shown {
+	opacity: 0.95;
+	background: silver;
+}
+@media (max-width: 900px) {
+	#banner {
+		font-size: 70%;
+	}
 
 	body {
-		font-size: 10px;
+		font-size: 70%;
 	}
+
+
 	nav {
 		height: 5%;
-		font-size: 10px;
+		font-size: 10%;
+		margin-bottom: 15%;
 	}
 	.navdiv {
 		width: 40%;
@@ -166,12 +213,44 @@ input {
 
 }
 
-
-@media (min-width: 800px){
+@media (max-width: 600px) {
 	body {
-		/*background-image: ;*/
+		clear: both;
 	}
+	
+	a {
+	font-size: 50%;
+	}
+
+	nav {
+		height: 2.5%;
+		font-size: 10%;
+		margin-bottom: 15%;
+	}
+
+	.navdiv {
+		width: 40%;
+	}
+
+	textarea {
+		width: 25%;
+		height:25%;
+		color: black;
+		font-family: impact;
+	}
+		.funk, .ispublished, .funkButtons, .editButtons, form > button {
+			height: 5%;
+			width: 100%;
+			margin-top: 2%;
+			margin-bottom: 2%;
+			display: block;
+			clear: both;
+		}
+
 }
+
+
+
 hr {
 	border-top: 1px inset silver;
 	border-bottom: 1px outset gold;
@@ -182,9 +261,3 @@ div.well {
 	border-top: 2px solid gold;
 }
 
-#banner {
-	height: 15%;
-	width: 100%;
-	border: 10px outset gold;
-	background-color: silver;
-}
