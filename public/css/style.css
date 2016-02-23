@@ -64,6 +64,11 @@ button {
 	background-image: url('https://nypdecider.files.wordpress.com/2015/12/1-nick-offerman.gif?w=618&h=385&crop=1');
 	background-repeat: no-repeat;
 	background-size: cover;
+	color: white;
+	-webkit-text-fill-color: #F3F315; 
+ 	-webkit-text-stroke-width: 1px;
+ 	-webkit-text-stroke-color: #FF69B4;
+ 	text-align: left;
 }
 
 .userBlogLinks {
@@ -163,6 +168,22 @@ input {
 	border: 5px inset gold;
 }
 
+.comment-box {
+	height: 10%;
+	width: 75%;
+	border: 5px inset silver;
+	background: white;
+	text-align: left;
+	font-family: impact, serif;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	color: white;
+	-webkit-text-fill-color: #F3F315; 
+ 	-webkit-text-stroke-width: 1px;
+ 	-webkit-text-stroke-color: #FF69B4;
+ 	font-size: 16px;
+}
+
 #banner {
 	height: 15%;
 	width: calc(100%-1em);
@@ -188,6 +209,14 @@ input:placeholder-shown {
 	opacity: 0.95;
 	background: silver;
 }
+
+.blogger-id {
+	font-size: 10px;
+	text-align: center;
+	position: absolute;
+ 	margin-top: 58px;
+}
+
 @media (max-width: 900px) {
 	#banner {
 		font-size: 70%;
@@ -210,6 +239,12 @@ input:placeholder-shown {
 		width: 50%;
 		height:50%;
 	}
+	.blogger-id {
+	font-size: 10px;
+	text-align: center;
+	position: absolute;
+ 	margin-top: 48px;
+}
 
 }
 
