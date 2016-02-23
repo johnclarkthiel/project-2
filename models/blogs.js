@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var userSchema = require('./users.js');
+var commentSchema = require('./comments.js').schema;
 
 var newBlog = new Schema();
 
@@ -10,8 +11,8 @@ newBlog.add({
 		dek : {type : String, requried: true},
 		date : {type : Date, default: Date.now},
 		published : {type: Boolean},
-		comments : [{type : String}],
-		blogger : [userSchema]
+		blogger : [userSchema],
+		comments : [commentSchema]
 });
 
 var Blog = mongoose.model('Blog', newBlog);

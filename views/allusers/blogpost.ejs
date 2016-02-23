@@ -16,14 +16,8 @@
 		<br>
 
 		<% if (blogpost.published) { %>
-		<form  action='/allusers/blog/<%=blogpost._id%>?_method=PUT' method='POST'>
-			<input type='hidden' name='title' value='<%=blogpost.title%>'>
-			<input type='hidden' name='hed' value='<%=blogpost.hed%>'>
-			<input type='hidden' name='dek' value='<%=blogpost.dek%>'>
-			<input type='hidden' name='date'>
-			<input type='hidden' name='published' value='<%=blogpost.dek%>'>
+		<form  action='/allusers/blog/<%=blogpost._id%>' method='POST'>
 			<textarea id='comment-form' name='comments' placeholder='If you care to comment, this is the place to do it...'></textarea>
-			<input type='hidden' name='blogger' value='<%=blogpost.blogger%>'>
 			<br>
 			<button>Post your comment</button>
 		</form>
@@ -31,7 +25,7 @@
 		<% } %> 
 
 		<% for (var i = 0; i < blogpost.comments.length; i++ ) { %>
-			<div class='comment-box'><%=blogpost.comments[i]%></div></div>
+			<div class='comment-box'><%=blogpost.comments[i].comments%></div>
 	  <%	} %>
 
 	

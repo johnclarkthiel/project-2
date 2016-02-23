@@ -1,8 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+
 var User = require('../models/users.js');
 var Blog = require('../models/blogs.js');
+var Comment = require('../models/comments.js')
 
 var passport = require('passport');
 
@@ -67,16 +69,24 @@ router.get('/blog/:id', function(req,res){
 	});
 });
 
-//put for comments
-router.put('/blog/:id', function(req,res){
+//post for comments
+router.post('/blog/:id', function(req,res){
 	Blog.findById(req.params.id, function(err, blogpost){
 		if (err) {console.log(err); res.send(err); }
-		console.log(blogpost.comments);
-		console.log(req.body.comments);
-		blogpost.comments.push(req.body.comments);
-		blogpost.save(function(err){
+		console.log('BLOG >>>>' + blogpost);
+
+		console.log('Comments >>>>' + req.body.comments);
+		var newComment = new Comment({ comments :req.body.comments});
+		console.log('NEW COMMENT ' + newComment);
+
+		newComment.save(function(err, comment){
 			if (err) {console.log(err); res.send(err);}
-			res.redirect('/allusers/blog/' + req.params.id);
+			blogpost.comments.push(comment);
+
+			blogpost.save(function(err){
+			if (err) {console.log(err); res.send(err);}
+				res.redirect('/allusers/blog/' + req.params.id);
+			});
 		});
 	});
 });
