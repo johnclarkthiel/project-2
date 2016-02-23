@@ -72,6 +72,7 @@ button {
 	width: 15%;
 	margin-left: 1%;
 	margin-right: 1%;
+	border: 5px outset gold;
 }
 
 #userindex {
@@ -91,6 +92,7 @@ button {
 	float: left;
 	clear: both;
 	text-align: center;
+	border: 5px inset silver;
 }
 
 .compress {
@@ -131,10 +133,10 @@ nav {
 }
 
 .funk {
-	width: 49.75%;
+	width: 48%;
 	height: 5%;
-	border: 1px solid gold;
-	background-color: grey;
+	border: 5px inset gold;
+	background-color: silver;
 	margin: 0;
 	display: block;
 	float: left;
@@ -164,3 +166,25 @@ input {
 
 }
 
+
+@media (min-width: 800px){
+	body {
+		/*background-image: ;*/
+	}
+}
+hr {
+	border-top: 1px inset silver;
+	border-bottom: 1px outset gold;
+	clear: both;
+}
+
+div.well {
+	border-top: 2px solid gold;
+}
+
+#banner {
+	height: 15%;
+	width: 100%;
+	border: 10px outset gold;
+	background-color: silver;
+}
