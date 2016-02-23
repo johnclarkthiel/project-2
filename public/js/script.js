@@ -11,4 +11,6 @@ $(".funk").click(function() {
   return false;
 });
 
+
+
 }); //<<<END function on load

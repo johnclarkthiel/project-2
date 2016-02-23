@@ -21,11 +21,19 @@ body {
 a {
 	color: white;
 	font-size: 24px;
+	text-decoration: none;
+}
+
+a:hover {
+	font-size: 100.1%;
+	color: gold;
+	font-family: impact;
 }
 
 textarea {
 	height: 50%;
 	width: 80%;
+	border: 10px outset silver;
 }
 
 #comment-form {
@@ -37,14 +45,17 @@ textarea {
 button {
 	height: 5%;
 	width: 10%;
+	border: 5px inset silver;
 }
 
 #public-post, #private-post {
-	border: 2px solid white;
+	border: 10px inset gold;
 	height: 75%;
 	width: 75%;
 	background-color: white;
-	color: black;
+	background-image: url('https://nypdecider.files.wordpress.com/2015/12/1-nick-offerman.gif?w=618&h=385&crop=1');
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .userBlogLinks {
@@ -91,7 +102,7 @@ nav {
 	margin-top: -0.1%;
 	padding: 0;
 	width: 100%;
-	border: 1px solid gold;
+	border: 5px outset gold;
 	background: grey;
 	position: fixed;
 	z-index: +1;
@@ -128,5 +139,28 @@ nav {
 	display: block;
 	float: left;
 	text-align: center;
+}
+
+input {
+	border: 5px inset gold;
+}
+
+@media (max-width: 800px) {
+
+	body {
+		font-size: 10px;
+	}
+	nav {
+		height: 5%;
+		font-size: 10px;
+	}
+	.navdiv {
+		width: 40%;
+	}
+	textarea {
+		width: 50%;
+		height:50%;
+	}
+
 }
 
