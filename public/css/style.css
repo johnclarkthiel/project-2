@@ -294,6 +294,12 @@ input:placeholder-shown {
 		display: block;
 		clear: both;
 	}
+	#public-post, #private-post {
+		background-image: url('https://pbs.twimg.com/media/B-TIa8IIcAAAT8_.jpg');
+		background-size: 100%;
+		background-position: 50% 100%;
+		background-color: gold;
+	}
 }
 
 
