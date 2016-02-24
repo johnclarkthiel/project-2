@@ -8,12 +8,12 @@ Basic blogging platform/Express application outfitted with three models, signup 
 
 ###Tech Used
 1. Node.js 
-⋅⋅*Express
-⋅⋅*Passport
-⋅⋅*EJS Templates
+⋅⋅1. Express
+⋅⋅2. Passport
+⋅⋅3. EJS Templates
 2. MongoDB & Mongoose
 3. JavaScript
-⋅⋅*jQuery
+⋅⋅1. jQuery
 4. CSS
 5. HTML
 
