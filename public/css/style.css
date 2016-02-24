@@ -222,6 +222,10 @@ input:placeholder-shown {
 
 	body {
 		font-size: 70%;
+		color: white;
+		-webkit-text-fill-color: white; 
+ 		-webkit-text-stroke-width: 1px;
+ 		-webkit-text-stroke-color: white;
 	}
 
 
