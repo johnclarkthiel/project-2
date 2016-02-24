@@ -216,7 +216,7 @@ input:placeholder-shown {
 }
 
 @media (max-width: 900px) {
-	#banner {
+	#banner, {
 		font-size: 70%;
 	}
 
@@ -227,7 +227,7 @@ input:placeholder-shown {
 
 	nav {
 		height: 5%;
-		font-size: 10%;
+		font-size: 12px;
 		margin-bottom: 15%;
 	}
 	.navdiv {
@@ -242,11 +242,13 @@ input:placeholder-shown {
 	text-align: center;
 	position: absolute;
  	margin-top: 48px;
-}
+	}
 
-}
+	h1 {
+		margin-top: 5%;
+	}
 
-@media (max-width: 600px) {
+
 	body {
 		clear: both;
 	}
@@ -271,17 +273,15 @@ input:placeholder-shown {
 		color: black;
 		font-family: impact;
 	}
-		.funk, .ispublished, .funkButtons, .editButtons, form > button {
-			height: 5%;
-			width: 100%;
-			margin-top: 2%;
-			margin-bottom: 2%;
-			display: block;
-			clear: both;
-		}
-
+	.funk, .ispublished, .funkButtons, .editButtons, form > button {
+		height: 5%;
+		width: 100%;
+		margin-top: 2%;
+		margin-bottom: 2%;
+		display: block;
+		clear: both;
+	}
 }
-
 
 
 hr {
