@@ -6,7 +6,7 @@ var commentSchema = require('./comments.js').schema;
 var newBlog = new Schema();
 
 newBlog.add({
-		title : { type: String, unique: true, required: true },
+		title : { type: String, required: true },
 		hed : {type : String},
 		dek : {type : String, requried: true},
 		date : {type : Date, default: Date.now},
