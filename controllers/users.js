@@ -49,6 +49,7 @@ router.get('/:id', loggedIn, function(req,res){
 
 //go to CREATE PAGE ===>>> new/create page
 router.get('/:id/new', function(req,res){
+	res.locals.user = req.user;
 	User.findById(req.params.id, function(err, user){
 		res.render('user/new.ejs', {
 			user : user
@@ -85,6 +86,7 @@ router.post('/:id/new', function(req,res){
 
 //need an edit page ... goes to id/edit/blog_id
 router.get('/edit/:id', function(req, res){
+	res.locals.user = req.user;
 	Blog.findById(req.params.id, function(err, blogpost){
 		if (err) {console.log(err); res.send(err); };
 		// console.log(blogpost);
@@ -96,6 +98,7 @@ router.get('/edit/:id', function(req, res){
 
 //SHOW ===> get show/edit page
 router.get('/show/:id', function(req,res) {
+	res.locals.user = req.user;
 	Blog.findById(req.params.id, function(err, blogpost) {
 		if (err) {console.log(err); res.send(err); };
 		// console.log('BLOGPOST' + blogpost);
@@ -108,6 +111,7 @@ router.get('/show/:id', function(req,res) {
 
 //UPDATE --> need a put function here
 router.put('/:id', function(req,res){
+	res.locals.user = req.user;
 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err,blogpost){
 		console.log("REQ PARAMS ID " + req.params.id);
 		if (err) {console.log(err); res.send(err); };

@@ -5,6 +5,7 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
+	<% if (user.id ==  blogpost.blogger) { %>
 	<nav>
 		<div class='navdiv'><a href="/users/<%=blogpost.blogger%>">Go back your home</a></div>
 		<div class='navdiv'><a href="/">See other blogs!</a></div>
@@ -27,4 +28,5 @@
 		<input id='publish' type='hidden' value='<%=blogpost.published%>'>
 
 		<script type="text/javascript" src='/js/script.js'></script>	
+	<% } %> 
 </html>
