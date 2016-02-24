@@ -15,19 +15,30 @@
 		<div id="public-post"><%=blogpost.dek%></div>
 		<br>
 
-		<% if (blogpost.published) { %>
+		<% if (login) { %>
 		<form  action='/allusers/blog/<%=blogpost._id%>' method='POST'>
 			<textarea id='comment-form' name='comments' placeholder='If you care to comment, this is the place to do it...'></textarea>
 			<br>
 			<button>Post your comment</button>
 		</form>
+		<a href="/users/<%=blogpost.blogger%>">Go back to you page</a>
 		<br>
 		<% } %> 
 
-		<% for (var i = 0; i < blogpost.comments.length; i++ ) { %>
-			<div class='comment-box'><%=blogpost.comments[i].comments%></div>
-	  <%	} %>
-
+		<div>Comments: </div>
+		<% if (login && user._id == blogpost.blogger)  { %>
+			<% for (var i = 0; i < blogpost.comments.length; i++ ) { %>
+				<div class='comment-box'><%=blogpost.comments[i].comments%></div>
+				<form action='/allusers/blog/<%=blogpost._id%>' method='POST'>
+					<input type='hidden' name='comments' value='<%=blogpost.comments[i].comments%>'>
+					<button>Delete comments</button>
+				</form>
+		  <%	} %>
+		<% } else { %>
+				<% for (var i = 0; i < blogpost.comments.length; i++ ) { %>
+				<div class='comment-box'><%=blogpost.comments[i].comments%></div>
+		  <%	} %>
+		 <% } %>
 	
 
 	<script type="text/javascript" src='/js/script.js'></script>	

@@ -62,6 +62,9 @@ router.get('/:id', function(req,res){
 
 //show each individual page
 router.get('/blog/:id', function(req,res){
+	res.locals.login = req.isAuthenticated();
+	res.locals.user = req.user;
+	// console.log('REQ USER' + req.user);
 	Blog.findById(req.params.id, function(err, blogpost){
 		res.render('allusers/blogpost.ejs', {
 			blogpost : blogpost 
