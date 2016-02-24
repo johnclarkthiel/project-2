@@ -53,6 +53,8 @@ router.post('/login', passport.authenticate('local-login',{
 
 //show public user index page -- all users
 router.get('/:id', function(req,res){
+	res.locals.login = req.isAuthenticated();
+	res.locals.user = req.user;
 	User.findById(req.params.id, function(err, users){
 		res.render('allusers/show.ejs', {
 			users : users

@@ -10,17 +10,28 @@
 		<div class='navdiv'><a href="/allusers">Go to the signup/page</a></div>
 	</nav>
 	<br>
-	<h1 id='showh1'> <%= users.name %>'s Blog </h1>
+	<h1 id='showh1'> <%=users.name%>'s Blog </h1>
 
+		<% if (login && user.id == users._id) { %>
 			<% for (var i = 0; i < users.blog.length; i++) { %>	
 				<% if (users.blog[i].published) { %>
 				Post <%=[i+1]%>:
 					<a href="/allusers/blog/<%=users.blog[i]._id%>"><li> <%=users.blog[i].title%></li></a><br>
 				<% } else { %>
-					<li>THERE'S NOTHING HERE - THIS HASN'T BEEN PUBLISHED YET!!!!!</li>
+					<li><a href="/">Go home</a></li>
+				<% } %>
+				<a href="/users/<%=users._id%>">Go back to your page</a>
+			<%	} %><br>
+		<% } else { %>
+			<% for (var i = 0; i < users.blog.length; i++) { %>	
+				<% if (users.blog[i].published) { %>
+				Post <%=[i+1]%>:
+					<a href="/allusers/blog/<%=users.blog[i]._id%>"><li> <%=users.blog[i].title%></li></a><br>
+				<% } else { %>
+					<li><a href="/">Go home</a></li>
 				<% } %>
 			<%	} %><br>
-			
+		<% } %>
 	<script type="text/javascript" src='/js/script.js'></script>	
 </body>
 </html>
