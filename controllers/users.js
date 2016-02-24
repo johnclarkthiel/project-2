@@ -24,17 +24,6 @@ router.get('/:id/logout', function(req,res){
 	res.redirect('/allusers');
 });
 
-
-// INDEX ==>>>> private show page for user=
-// router.get('/:id', function(req,res) {
-// 	User.findById(req.params.id, function(err, user){
-// 		// console.log(user);
-// 		res.render('user/index.ejs', {
-// 			user : user
-// 		});
-// 	});
-// });
-
 //show page for user only
 router.get('/:id', loggedIn, function(req,res){
 	if (req.params.id == req.user.id) {
@@ -234,3 +223,13 @@ module.exports = router;
 //,{'$set' : {'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed, 'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}}
 //{$set: {blog : {'blog.$.title' : blogpost.title, 'blog.$.hed' : blogpost.hed,'blog.$.dek' : blogpost.dek, 'blog.$.published' : blogpost.published}}}, {multi: false},
 //need a delete function somewhere
+
+// INDEX ==>>>> private show page for user=
+// router.get('/:id', function(req,res) {
+// 	User.findById(req.params.id, function(err, user){
+// 		// console.log(user);
+// 		res.render('user/index.ejs', {
+// 			user : user
+// 		});
+// 	});
+// });

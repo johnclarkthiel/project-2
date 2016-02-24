@@ -96,6 +96,18 @@ router.post('/blog/:id', function(req,res){
 	});
 });
 
+router.delete('/blog/:id', function(req,res){
+	Comment.findById(req.body.comments_id, function(err, com){
+		console.log('COMMENT>>>' + com);
+		console.log('COMMENT>>>' + com._id);
+		var commentid = com.id;
+			Blog.update({}, {$pull: { comments: { _id : commentid }}}, { multi : true }, function(err, blogpost){
+				if (err) {console.log(err); res.send(err);}
+				res.redirect('/allusers/blog/' + req.params.id);
+		});
+	});
+});
+
 
 
 module.exports = router;

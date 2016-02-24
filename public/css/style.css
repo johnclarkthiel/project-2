@@ -267,17 +267,17 @@ input:placeholder-shown {
 	}
 	
 	a {
-	font-size: 50%;
+	font-size: 100%;
 	}
 
 	nav {
-		height: 2.5%;
-		font-size: 10%;
+		height: 4%;
+		font-size: 100%;
 		margin-bottom: 15%;
 	}
 
 	.navdiv {
-		width: 40%;
+		width: 38%;
 	}
 
 	textarea {
@@ -287,7 +287,7 @@ input:placeholder-shown {
 		font-family: impact;
 	}
 	.funk, .ispublished, .funkButtons, .editButtons, form > button {
-		height: 5%;
+		height: 7%;
 		width: 100%;
 		margin-top: 2%;
 		margin-bottom: 2%;

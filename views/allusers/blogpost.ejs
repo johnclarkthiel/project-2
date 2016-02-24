@@ -37,8 +37,8 @@
 		<% if (login && user.id == blogpost.blogger)  { %>
 			<% for (var i = 0; i < blogpost.comments.length; i++ ) { %>
 				<div class='comment-box'><%=blogpost.comments[i].comments%></div>
-				<form action='/allusers/blog/<%=blogpost._id%>' method='POST'>
-					<input type='hidden' name='comments' value='<%=blogpost.comments[i].comments%>'>
+				<form action='/allusers/blog/<%=blogpost._id%>?_method=DELETE' method='POST'>
+					<input type='hidden' name='comments_id' value='<%=blogpost.comments[i]._id%>'>
 					<button>Delete comments</button>
 				</form>
 		  <%	} %>
