@@ -20,6 +20,7 @@ body {
  	font-family: Arial;
  	text-align: center;
  	text-shadow: 1px 1px black;
+ 	font-weight: bold;
 }
 
 #showh1{
@@ -34,6 +35,7 @@ a {
 
 a:hover {
 	color: gold;
+	text-decoration: underline;
 }
 
 textarea {
@@ -85,6 +87,7 @@ button {
 	margin-right: 1%;
 	border: 5px outset gold;
 	text-align: center;
+	margin-top: 2.5%;
 }
 
 #userindex {
@@ -215,6 +218,10 @@ input:placeholder-shown {
  	margin-top: 58px;
 }
 
+ul, li {
+	list-style: none;
+}
+
 @media (max-width: 900px) {
 	#banner, {
 		font-size: 70%;
@@ -271,7 +278,7 @@ input:placeholder-shown {
 	}
 
 	nav {
-		height: 4%;
+		height: 4.25%;
 		font-size: 100%;
 		margin-bottom: 15%;
 	}
@@ -281,18 +288,22 @@ input:placeholder-shown {
 	}
 
 	textarea {
-		width: 25%;
+		width: 100%;
 		height:25%;
 		color: black;
-		font-family: impact;
+		-webkit-text-fill-color: black; 
+ 		-webkit-text-stroke-width: 1px;
+ 		-webkit-text-stroke-color: black;
+		font-family: arial;
 	}
 	.funk, .ispublished, .funkButtons, .editButtons, form > button {
 		height: 7%;
 		width: 100%;
-		margin-top: 2%;
+		margin-top: 6%;
 		margin-bottom: 2%;
 		display: block;
 		clear: both;
+		background: gold;
 	}
 	#public-post, #private-post {
 		background-image: url('https://pbs.twimg.com/media/B-TIa8IIcAAAT8_.jpg');

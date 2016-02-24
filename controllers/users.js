@@ -99,7 +99,42 @@ router.get('/show/:id', function(req,res) {
 
 
 //UPDATE --> need a put function here
-router.put('/:id', function(req,res){
+router.put('/edit/:id', function(req,res){
+	res.locals.user = req.user;
+	Blog.findByIdAndUpdate(req.params.id, req.body, function(err,blogpost){
+		console.log("REQ PARAMS ID " + req.params.id);
+		if (err) {console.log(err); res.send(err); };
+		console.log('BLOGGER >>>>> ' + blogpost.blogger);
+
+		User.findById(blogpost.blogger,
+ 
+			function(err,user){
+			if (err) {console.log(err); res.send(err); };
+			console.log('USER Blog' + user.blog);
+			var bloggy = user.blog;
+			console.log('Bloggy ' + bloggy);
+			// console.log('BLOGGY ID ' + bloggy.id);
+			for (var i = 0; i < bloggy.length; i++) {
+				if (bloggy[i].id == req.params.id) {
+					user.blog[i].title = blogpost.title;
+					console.log(user.blog[i].title);
+					user.blog[i].hed = blogpost.hed;
+					console.log(user.blog[i].hed);
+					user.blog[i].dek = blogpost.dek;
+					console.log(user.blog[i].dek);
+					user.blog[i].published = blogpost.published;
+					console.log(user.blog[i].published);
+				}//<<<<<<< end if
+			}//<<<<<<<< end for
+			user.save(function (err) {
+				res.redirect('/users/edit/' + req.params.id)
+			});
+		});
+	});
+});
+
+//UPDATE --> need a put function here
+router.put('/show/:id', function(req,res){
 	res.locals.user = req.user;
 	Blog.findByIdAndUpdate(req.params.id, req.body, function(err,blogpost){
 		console.log("REQ PARAMS ID " + req.params.id);

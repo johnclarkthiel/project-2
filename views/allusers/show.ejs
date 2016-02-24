@@ -18,10 +18,9 @@
 				Post <%=[i+1]%>:
 					<a href="/allusers/blog/<%=users.blog[i]._id%>"><li> <%=users.blog[i].title%></li></a><br>
 				<% } %>
+			<%	} %><br>
 				<a href="/users/<%=users._id%>">Go back to your page</a> ~ 
 				<a href="/">Go to home page</a>
-			<%	} %><br>
-
 		<% } else { %>
 			<% for (var i = 0; i < users.blog.length; i++) { %>	
 				<% if (users.blog[i].published) { %>

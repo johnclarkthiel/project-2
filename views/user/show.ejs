@@ -5,7 +5,6 @@
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
 </head>
 <body>
-	<% if (user.id ==  blogpost.blogger) { %>
 	<nav>
 		<div class='navdiv'><a href="/users/<%=blogpost.blogger%>">Go back to your home page</a></div>
 		<div class='navdiv'><a href="/">See other blogs</a></div>
@@ -24,7 +23,7 @@
 					<p>Published Status: Not published!</p>
 			<%	}	%>
 		</div>
-		<form class='compress' action='/users/<%=blogpost._id%>?_method=PUT' method='POST'>
+		<form class='compress' action='/users/show/<%=blogpost._id%>?_method=PUT' method='POST'>
 			<input type='hidden' name='title' value='<%=blogpost.title%>'>
 			<input type='hidden' name='hed' value='<%=blogpost.hed%>'>
 			<input type='hidden' name='dek' value='<%=blogpost.dek%>'>
@@ -34,7 +33,7 @@
 			<button class='editButtons'>Publish</button>
 		</form><br> 
 
-		<form class='compress' action='/users/<%=blogpost._id%>?_method=PUT' method='POST'>
+		<form class='compress' action='/users/show/<%=blogpost._id%>?_method=PUT' method='POST'>
 			<input type='hidden' name='title' value='<%=blogpost.title%>'>
 			<input type='hidden' name='hed' value='<%=blogpost.hed%>'>
 			<input type='hidden' name='dek' value='<%=blogpost.dek%>'>
@@ -45,6 +44,5 @@
 		</form> 
 
 	<script type="text/javascript" src='/js/script.js'></script>	
-	<% } %> 
 </body>
 </html>
