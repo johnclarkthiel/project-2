@@ -22,7 +22,7 @@ Basic blogging platform/Express application outfitted with three models, signup 
 2. Full RESTFUL routes for logged-in users; partial for non-users and logged-in users viewing other users' blogs
 3. Persistent data using Mongo and Mongoose-derived data creation and interaction
 4. Responsive design
-5. Droll, apt naming conventions
+
 
 ###Future implementations
 1. Edit commments feature for logged-in users
