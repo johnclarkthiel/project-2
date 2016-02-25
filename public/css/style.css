@@ -191,7 +191,7 @@ input {
 	border: 10px outset gold;
 	background-color: silver;
 	animation-name: lights;
-	animation-duration: 5s;
+	animation-duration: 30s;
 	animation-iteration-count: infinite;
 	margin-bottom: 10%;
 	font-size: 70%;
@@ -199,11 +199,15 @@ input {
 
 
 @keyframes lights {
-	0% { border: 10px outset gold;} 
-	25%  { border: 10px inset silver;} 
-	50% {border: 10px outset gold;} 
-	75%  {border: 10px inset silver;} 
-	100%  {border: 10px outset gold;} 
+	0% { border: 10px outset gold; transform: rotateX(90deg);}
+	12% {transform : rotate(360deg); } 
+	25%  { border: 10px inset silver; transform:rotateX(-90deg);} 
+	37% {transform: rotate(-180deg);}
+	50% {border: 10px outset gold; transform: rotateX(-180deg);} 
+	62% {transform: rotate(180deg);}
+	75%  {border: 10px inset silver; transform: rotateX(-90deg);} 
+	87% {transform: rotate(-360deg);}
+	100%  {border: 10px outset gold; transform: roateX(90deg);} 
 } 
 
 input:placeholder-shown {
