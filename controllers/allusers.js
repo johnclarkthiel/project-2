@@ -64,6 +64,7 @@ router.get('/:id', function(req,res){
 
 //show each individual page
 router.get('/blog/:id', function(req,res){
+	//sets local variables login and user for this page
 	res.locals.login = req.isAuthenticated();
 	res.locals.user = req.user;
 	// console.log('REQ USER' + req.user);
@@ -79,11 +80,11 @@ router.post('/blog/:id', function(req,res){
 	Blog.findById(req.params.id, function(err, blogpost){
 		if (err) {console.log(err); res.send(err); }
 		console.log('BLOG >>>>' + blogpost);
-
+		//creates new comment
 		console.log('Comments >>>>' + req.body.comments);
 		var newComment = new Comment({ comments :req.body.comments});
 		console.log('NEW COMMENT ' + newComment);
-
+		//saves comment
 		newComment.save(function(err, comment){
 			if (err) {console.log(err); res.send(err);}
 			blogpost.comments.push(comment);
@@ -97,10 +98,12 @@ router.post('/blog/:id', function(req,res){
 });
 
 router.delete('/blog/:id', function(req,res){
+	//finds comment by comments_id in ejs template
 	Comment.findById(req.body.comments_id, function(err, com){
 		console.log('COMMENT>>>' + com);
 		console.log('COMMENT>>>' + com._id);
 		var commentid = com.id;
+		//blog updates by searching all its docs, matching its subdoc comment id with the commentid var declared above, blog removes the matched id
 			Blog.update({}, {$pull: { comments: { _id : commentid }}}, { multi : true }, function(err, blogpost){
 				if (err) {console.log(err); res.send(err);}
 				res.redirect('/allusers/blog/' + req.params.id);
