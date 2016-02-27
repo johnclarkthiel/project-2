@@ -4,7 +4,7 @@
 
 ###Description
 
-Basic blogging platform/Express application outfitted with three models, signup and login/user authentication using Passport, complete RESTful routes for user functionality and partial RESTful routes for non-users and logged-in users viewing other users' blogs (GET/POST/DELETE), persistent data using MonoDB, ORM/Mongoose utilization to interact with Mongo, EJS templating for user/public views, responsive design/CSS, DOM manipulation using jQuery, and online deployment via Heroku. 
+Basic blogging platform/Express application outfitted with three models, signup and login/user authentication using Passport, complete RESTful routes for user functionality and partial RESTful routes for non-users and logged-in users viewing other users' blogs (GET/POST/DELETE), persistent data using MonoDB, ORM/Mongoose API utilization to interact with Mongo, EJS templating for user/public views, responsive design/CSS, DOM manipulation using jQuery, and online deployment via Heroku. 
 
 ###Tech Used
 1. Node.js 
